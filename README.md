@@ -1,7 +1,14 @@
 # PyMood
-An experimental prototype for the "Safe Zone" game jam, aimed at testing the capabilities of vibe coding in a game setting. Instead of starting from scratch, this project explores how Pygame and ChatGPT can be used to rapidly prototype a mini-demo of the final project—without manually altering the code itself.
+An experimental prototype for the **"Safe Zone" game jam**, designed to test the potential of **vibe coding** in a game development context.  
+Rather than starting from scratch, this project explores how **Pygame** and **ChatGPT** can be combined to rapidly prototype a mini-demo of the final concept — all without manually writing or modifying code line by line.
 
-The following sections will explore the iterations in this process, with prompts followed by links to the associated commits in the code.
+The sections below walk through the development process, with each *prompt* followed by a link to the corresponding *commit*.
+
+Overall, the results were very satisfying — with minimal time wasted. After just seven iterations, I was happy with the outcome of the concept demo.
+
+```
+Note that the player moves with the arrow keys.
+```
 
 
 # Iteration No. 1
@@ -83,6 +90,16 @@ Encapsulate the code in a main() function and use clearer, well-defined utility 
 1. The zombies can still manage to harm the player while he is in the locked Safe Zone.
 2. I need to have a random spot on the map with a green dot (Health Up).
 3. I want a small indicator for the locking mechanism of the Safe Zone (maybe a small loading bar).
+```
+
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/9acb4ee13991bff351566b771b14541200b3ed29)
+
+
+# Iteration No. 7
+```
+1. The Safe Zone should not be visible unless the player is inside it.
+2. Pressing ESC should pause the game and show options to Continue or Restart.
+3. The game should get harder over time by adding more enemies. Use a linear difficulty curve, e.g., number of enemies = 5 + score * 2.
 ```
 
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
