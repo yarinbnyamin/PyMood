@@ -37,16 +37,19 @@ def main():
         ]
 
     def reset_safe_zone():
-        nonlocal safe_zone, round_start_time, zombies, locked_safe_zone, score
+        nonlocal safe_zone, round_start_time, zombies, locked_safe_zone, score, health_pickups
         safe_zone = [random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)]
         round_start_time = pygame.time.get_ticks()
         zombies.extend(spawn_zombies())
         locked_safe_zone = False
         score += 1
+        health_pickups.append(
+            [random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)]
+        )
 
     def reset_game():
         nonlocal player_pos, safe_zone, last_signal_time, round_start_time, zombies, running
-        nonlocal show_game_over, locked_safe_zone, player_health, score, hold_start_time, lock_held
+        nonlocal show_game_over, locked_safe_zone, player_health, score, hold_start_time, lock_held, health_pickups
         player_pos = [WIDTH // 2, HEIGHT // 2]
         safe_zone = [random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)]
         last_signal_time = 0
@@ -59,6 +62,9 @@ def main():
         score = 0
         hold_start_time = 0
         lock_held = False
+        health_pickups = [
+            [random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)]
+        ]
 
     # Initial state
     player_pos = [WIDTH // 2, HEIGHT // 2]
@@ -73,6 +79,7 @@ def main():
     score = 0
     hold_start_time = 0
     lock_held = False
+    health_pickups = [[random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)]]
 
     while running:
         dt = clock.tick(60)
@@ -163,13 +170,22 @@ def main():
                 zombie[1] += ZOMBIE_SPEED * dy / distance
 
             if distance < PLAYER_RADIUS + 8:
-                player_health -= ZOMBIE_DAMAGE
+                if not (locked_safe_zone and dist_to_safe < SAFE_ZONE_RADIUS):
+                    player_health -= ZOMBIE_DAMAGE
                 knock_dx = -KNOCKBACK_DISTANCE * dx / distance
                 knock_dy = -KNOCKBACK_DISTANCE * dy / distance
                 zombie[0] += knock_dx
                 zombie[1] += knock_dy
                 zombie[0] = max(0, min(WIDTH, zombie[0]))
                 zombie[1] = max(0, min(HEIGHT, zombie[1]))
+
+        for pickup in health_pickups[:]:
+            if (
+                math.hypot(player_pos[0] - pickup[0], player_pos[1] - pickup[1])
+                < PLAYER_RADIUS + 8
+            ):
+                player_health = min(PLAYER_MAX_HEALTH, player_health + 20)
+                health_pickups.remove(pickup)
 
         if player_health <= 0:
             show_game_over = True
@@ -185,6 +201,9 @@ def main():
 
         for zombie in zombies:
             pygame.draw.circle(screen, RED, (int(zombie[0]), int(zombie[1])), 8)
+
+        for pickup in health_pickups:
+            pygame.draw.circle(screen, GREEN, (int(pickup[0]), int(pickup[1])), 6)
 
         pygame.draw.circle(screen, WHITE, player_pos, PLAYER_RADIUS)
 
@@ -204,6 +223,25 @@ def main():
                 font.render("Hold E to lock/unlock (1s)", True, WHITE),
                 (WIDTH // 2 - 150, HEIGHT - 40),
             )
+            if hold_start_time > 0:
+                bar_length = 100
+                progress = min(1.0, (current_time - hold_start_time) / 1000.0)
+                pygame.draw.rect(
+                    screen,
+                    WHITE,
+                    (WIDTH // 2 - bar_length // 2, HEIGHT - 20, bar_length, 10),
+                    1,
+                )
+                pygame.draw.rect(
+                    screen,
+                    GREEN,
+                    (
+                        WIDTH // 2 - bar_length // 2,
+                        HEIGHT - 20,
+                        int(bar_length * progress),
+                        10,
+                    ),
+                )
 
         pygame.display.flip()
 

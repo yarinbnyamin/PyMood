@@ -75,4 +75,14 @@ Encapsulate the code in a main() function and use clearer, well-defined utility 
 3. Lock/unlock actions should require holding the button for 1 second. If the button is held longer, it won't have any additional effect until it's released and pressed again.
 ```
 
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/4aeaf33036980e035f8651a56f9cfa1fc4b3a4f3)
+
+
+# Iteration No. 6
+```
+1. The zombies can still manage to harm the player while he is in the locked Safe Zone.
+2. I need to have a random spot on the map with a green dot (Health Up).
+3. I want a small indicator for the locking mechanism of the Safe Zone (maybe a small loading bar).
+```
+
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
