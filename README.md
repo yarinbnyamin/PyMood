@@ -58,5 +58,21 @@ If I am in the safe zone and the door is locked, zombies can still come in.
 Don't allow the zombies to get into the locked Safe Zone.
 Encapsulate the code in a main() function and use clearer, well-defined utility functions.
 ```
+```
+1. The game restarts when the timer runs out and the player survives — but I want it to continue from the current position, with a new goal and new enemies instead.
+2. The player can't leave the Safe Zone after it's locked.
+3. The player can unlock the Safe Zone.
+4. Zombies should get knocked back (not stuck) when they touch the locked Safe Zone.
+```
+
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/89f80cb57250bffdef99329590ec629ebf4cdef0)
+
+
+# Iteration No. 5
+```
+1. Add a restart button after the player loses.
+2. Add a scoring system.
+3. Lock/unlock actions should require holding the button for 1 second. If the button is held longer, it won't have any additional effect until it's released and pressed again.
+```
 
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
