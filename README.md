@@ -46,4 +46,17 @@ When the player reaches the Safe Zone, they need to lock the door by activating 
 Once the timer runs out, all the red dots are eliminated.
 ```
 
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/d5bfc013c0572b8390e9b89f187a85e5469b3dd4)
+
+
+# Iteration No. 4
+```
+Add a health bar. If I touch a red dot, I take damage (the red dot also gets a small knockback).  
+If I am in the safe zone and the door is locked, zombies can still come in.
+```
+```
+Don't allow the zombies to get into the locked Safe Zone.
+Encapsulate the code in a main() function and use clearer, well-defined utility functions.
+```
+
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
