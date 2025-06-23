@@ -18,4 +18,17 @@ What is your safe zone? A place? An idea? A feeling? And how can it become a gam
 Can u make a simple demo in Pygame?
 ```
 
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/7632b919faf94e2e216b0a4c3365b6d815fb121e)
+
+
+# Iteration No. 2
+```
+Let’s add:
+1. A dash option
+2. Restrict the player from going out of bounds
+3. A time limit to reach the Safe Zone
+ 3.1. If the player is not in the Safe Zone when time runs out, show "Game Over"
+ 3.2. If the player reaches the Safe Zone in time, generate a new Safe Zone location
+```
+
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
