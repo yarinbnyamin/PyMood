@@ -31,4 +31,19 @@ Let’s add:
  3.2. If the player reaches the Safe Zone in time, generate a new Safe Zone location
 ```
 
+[Link to the commit](https://github.com/yarinbnyamin/PyMood/tree/df5ed6d76208313c082c2adb549abe09dece3aaa)
+
+
+# Iteration No. 3
+```
+Generate some ideas to improve the game.
+```
+ChatGPT (short version): Add patrolling enemies or vision-based hazards for challenge. Introduce power-ups like Signal Boosters, Time Extenders, and Shields. Increase difficulty over rounds with shorter timers and weaker signals. Enhance visuals with dash trails, low-time screen effects, and ambient audio. Add flashback snippets for story depth, score tracking, pause menus, and cooldown indicators. Try co-op or versus modes as stretch goals.
+```
+Maybe a zombie theme?
+Red dots chase the player.
+When the player reaches the Safe Zone, they need to lock the door by activating a yellow circle.
+Once the timer runs out, all the red dots are eliminated.
+```
+
 [Link to the commit](https://github.com/yarinbnyamin/PyMood)
